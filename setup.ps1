@@ -126,7 +126,7 @@ function Configure-PhpIni {
     $phpIniProduction = Join-Path $PhpDir 'php.ini-production'
     $phpIniDevelopment = Join-Path $PhpDir 'php.ini-development'
     $extDir = Join-Path $PhpDir 'ext'
-    $requiredExtensions = @('openssl', 'curl', 'zip', 'fileinfo', 'mbstring', 'mysqli', 'pdo_mysql')
+    $requiredExtensions = @('openssl', 'curl', 'zip', 'fileinfo', 'mbstring', 'mysqli', 'pdo_mysql', 'pdo_sqlite', 'sqlite3', 'intl')
 
     foreach ($dll in @($requiredExtensions | ForEach-Object { "php_$_.dll" })) {
         $dllPath = Join-Path $extDir $dll
@@ -630,4 +630,4 @@ if (-not $NoDatabase) {
 
 Write-Step "Setup complete"
 & $phpExe -v
-Write-Host "openssl, curl, zip, fileinfo, mbstring, mysqli, and pdo_mysql are enabled."
+Write-Host "openssl, curl, zip, fileinfo, mbstring, mysqli, pdo_mysql, pdo_sqlite, sqlite3, and intl are enabled."
